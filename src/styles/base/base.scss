@@ -1,15 +1,13 @@
-@use '../globals/variables.scss' as *;
-
 body {
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  font-family: $ff-roboto-condensed;
+  font-family: var(--ff-roboto-condensed);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 input,
 button {
-  font-family: $ff-roboto-condensed;
+  font-family: var(--ff-roboto-condensed);
 }
