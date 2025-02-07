@@ -13,13 +13,14 @@ interface CharacterCardProps extends Character {
 }
 
 export default function CharacterCard({
+  id,
   name,
   image,
   isFavorite,
   onToggleFavorite,
 }: Readonly<CharacterCardProps>) {
   return (
-    <div className={styles.root}>
+    <div className={styles.root} data-id={id}>
       <Link href="/" passHref className={styles.link}>
         <Image
           src={image}
