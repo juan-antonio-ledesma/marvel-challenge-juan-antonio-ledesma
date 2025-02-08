@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 
 import { CharacterProvider } from '@/features/characters/context/CharacterContext'
 
-import Header from '@/features/common/components/Header'
+import Header from '@/common/components/Header/Header'
 
-import '../styles/styles.scss'
+import '../common/styles/globals/styles.scss'
 
 export const metadata: Metadata = {
   title: 'Juan Antonio Ledesma | Marvel Challenge',

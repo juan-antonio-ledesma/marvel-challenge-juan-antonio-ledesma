@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 
-import styles from '../styles/CharacterSearch.module.scss'
+import styles from './CharacterSearch.module.scss'
 
-import IconMagnifier from '@/shared/icons/IconMagnifier'
+import IconMagnifier from '@/assets/icons/IconMagnifier'
 
 interface CharacterSearchProps {
   readonly onSearch: (query: string) => void

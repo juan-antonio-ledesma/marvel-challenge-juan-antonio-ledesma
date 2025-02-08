@@ -5,7 +5,7 @@ import {
 } from '@/features/characters/services/marvelApi'
 import Image from 'next/image'
 
-import FavoriteButton from '@/features/common/components/FavoriteButton'
+import FavoriteButton from '@/features/characters/components/FavoriteButton/FavoriteButton'
 
 export default async function CharacterPage({
   params,

@@ -1,10 +1,10 @@
 'use client'
 
 import { useCharacters } from '@/features/characters/context/CharacterContext'
-import IconHeartEmpty from '@/shared/icons/IconHeartEmpty'
-import IconHeartFilled from '@/shared/icons/IconHeartFilled'
+import IconHeartEmpty from '@/assets/icons/IconHeartEmpty'
+import IconHeartFilled from '@/assets/icons/IconHeartFilled'
 
-import styles from '../styles/FavoriteButton.module.scss'
+import styles from './FavoriteButton.module.scss'
 
 interface FavoriteButtonProps {
   characterId: string

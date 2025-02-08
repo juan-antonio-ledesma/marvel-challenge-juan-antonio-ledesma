@@ -1,8 +1,8 @@
-import styles from '../styles/CharacterList.module.scss'
+import styles from './CharacterList.module.scss'
 
-import CharacterCard from './CharacterCard'
+import CharacterCard from '../CharacterCard/CharacterCard'
 
-import { Character } from '../types/characterTypes'
+import { Character } from '../../types/characterTypes'
 
 interface CharacterListProps {
   characters: Character[]

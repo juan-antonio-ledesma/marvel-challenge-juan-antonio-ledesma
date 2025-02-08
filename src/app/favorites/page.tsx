@@ -3,8 +3,8 @@
 import { useCharacters } from '@/features/characters/context/CharacterContext'
 import { useCharacterSearch } from '@/features/characters/hooks/useCharacterSearch'
 
-import CharacterSearch from '@/features/characters/components/CharacterSearch'
-import CharacterList from '@/features/characters/components/CharacterList'
+import CharacterSearch from '@/features/characters/components/CharacterSearch/CharacterSearch'
+import CharacterList from '@/features/characters/components/CharacterList/CharacterList'
 
 export default function FavoritesPage() {
   const { characters, toggleFavorite } = useCharacters()
