@@ -7,7 +7,7 @@ import CharacterSearch from '@/features/characters/components/CharacterSearch/Ch
 import CharacterList from '@/features/characters/components/CharacterList/CharacterList'
 
 export default function Home() {
-  const { characters, toggleFavorite, loading } = useCharacters()
+  const { characters, loading } = useCharacters()
 
   const { setSearchTerm, filteredCharacters } = useCharacterSearch(characters)
 
@@ -28,10 +28,7 @@ export default function Home() {
           {characters.length > 0 && (
             <p style={{ textTransform: 'uppercase' }}>{resultsText}</p>
           )}
-          <CharacterList
-            characters={filteredCharacters}
-            onToggleFavorite={toggleFavorite}
-          />
+          <CharacterList characters={filteredCharacters} />
         </>
       )}
     </main>

@@ -7,7 +7,7 @@ import CharacterSearch from '@/features/characters/components/CharacterSearch/Ch
 import CharacterList from '@/features/characters/components/CharacterList/CharacterList'
 
 export default function FavoritesPage() {
-  const { characters, toggleFavorite } = useCharacters()
+  const { characters } = useCharacters()
 
   const favoriteCharacters = characters.filter(char => char.isFavorite)
 
@@ -29,10 +29,7 @@ export default function FavoritesPage() {
       ) : (
         <>
           <p style={{ textTransform: 'uppercase' }}>{resultsText}</p>
-          <CharacterList
-            characters={filteredCharacters}
-            onToggleFavorite={toggleFavorite}
-          />
+          <CharacterList characters={filteredCharacters} />
         </>
       )}
     </main>

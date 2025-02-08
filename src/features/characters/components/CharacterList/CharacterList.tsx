@@ -19,7 +19,6 @@ export default function CharacterList({
           id={character.id}
           name={character.name}
           image={character.image}
-          description={character.description}
           isFavorite={character.isFavorite}
         />
       ))}
