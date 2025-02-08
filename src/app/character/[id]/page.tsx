@@ -1,14 +1,18 @@
 import { notFound } from 'next/navigation'
-import { fetchCharacterById } from '@/features/characters/services/marvelApi'
+import {
+  fetchCharacterById,
+  fetchComicsByCharacterId,
+} from '@/features/characters/services/marvelApi'
 import Image from 'next/image'
 
 export default async function CharacterPage({
   params,
 }: {
-  readonly params: { id: string }
+  readonly params: { readonly id: string }
 }) {
   const { id } = params
   const character = await fetchCharacterById(id)
+  const comics = await fetchComicsByCharacterId(id)
 
   if (!character) return notFound()
 
@@ -21,6 +25,26 @@ export default async function CharacterPage({
         height={300}
       />
       <p>{character.description}</p>
+
+      <h2>Comics</h2>
+      {comics.length === 0 ? (
+        <p>No comics available.</p>
+      ) : (
+        <ul style={{ listStyle: 'none', padding: 0 }}>
+          {comics.map(comic => (
+            <li key={comic.id} style={{ marginBottom: '15px' }}>
+              <Image
+                src={comic.thumbnail}
+                alt={comic.title}
+                width={180}
+                height={268}
+              />
+              <p>{comic.title}</p>
+              <small>{comic.releaseDate}</small>
+            </li>
+          ))}
+        </ul>
+      )}
     </main>
   )
 }

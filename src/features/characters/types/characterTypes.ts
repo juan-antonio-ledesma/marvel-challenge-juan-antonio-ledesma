@@ -15,3 +15,23 @@ export interface Character {
   description: string
   isFavorite: boolean
 }
+
+export interface MarvelComicAPI {
+  id: number
+  title: string
+  thumbnail: {
+    path: string
+    extension: string
+  }
+  dates: {
+    type: string
+    date: string
+  }[]
+}
+
+export interface Comic {
+  id: number
+  title: string
+  thumbnail: string
+  releaseDate: string
+}

@@ -3,6 +3,8 @@ import md5 from 'md5'
 import {
   MarvelCharacterAPI,
   Character,
+  MarvelComicAPI,
+  Comic,
 } from '@/features/characters/types/characterTypes'
 
 const PUBLIC_KEY = process.env.NEXT_PUBLIC_MARVEL_PUBLIC_KEY
@@ -70,7 +72,7 @@ export async function fetchCharacterById(
     const data = await response.json()
 
     if (!data?.data?.results?.length) {
-      return null // Si la API no devuelve resultados, retornamos null
+      return null
     }
 
     const character: MarvelCharacterAPI = data.data.results[0]
@@ -85,5 +87,48 @@ export async function fetchCharacterById(
   } catch (error) {
     console.error(`🚨 Error fetching character ${id}:`, error)
     return null
+  }
+}
+
+export async function fetchComicsByCharacterId(id: string): Promise<Comic[]> {
+  const { ts, hash } = getHash()
+  const url = `${BASE_URL}/${id}/comics?ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}&limit=20`
+
+  try {
+    const response = await fetch(url)
+
+    if (!response.ok) {
+      throw new Error(`Error ${response.status}: ${response.statusText}`)
+    }
+
+    const data = await response.json()
+
+    if (!data?.data?.results?.length) {
+      return []
+    }
+
+    return data.data.results
+      .map((comic: MarvelComicAPI): Comic => {
+        const onsaleDate = comic.dates.find(
+          date => date.type === 'onsaleDate',
+        )?.date
+
+        const releaseYear = onsaleDate
+          ? new Date(onsaleDate).getFullYear().toString()
+          : 'Unknown'
+
+        return {
+          id: comic.id,
+          title: comic.title,
+          thumbnail: `${comic.thumbnail.path}.${comic.thumbnail.extension}`,
+          releaseDate: releaseYear,
+        }
+      })
+      .sort(
+        (a: Comic, b: Comic) => Number(b.releaseDate) - Number(a.releaseDate),
+      )
+  } catch (error) {
+    console.error(`🚨 Error fetching comics for character ${id}:`, error)
+    return []
   }
 }
