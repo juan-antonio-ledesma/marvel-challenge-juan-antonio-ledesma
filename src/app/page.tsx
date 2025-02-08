@@ -1,106 +1,35 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
-import { fetchCharacters } from '@/features/characters/services/marvelApi'
+import { useCharacters } from '@/features/characters/context/CharacterContext'
 
 import CharacterSearch from '@/features/characters/components/CharacterSearch'
 import CharacterList from '@/features/characters/components/CharacterList'
 
-import { Character } from '@/features/characters/types/characterTypes'
-
-const LOCAL_STORAGE_KEY = 'favoriteCharacters'
-
 export default function Home() {
-  const [characters, setCharacters] = useState<Character[]>([])
-  const [filteredCharacters, setFilteredCharacters] = useState<Character[]>([])
+  const { characters, toggleFavorite } = useCharacters()
   const [searchTerm, setSearchTerm] = useState<string>('')
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-
-  useEffect(() => {
-    async function loadCharacters() {
-      setLoading(true)
-      try {
-        const data = await fetchCharacters()
-
-        // Retrieve stored favorite characters
-        const storedFavorites = localStorage.getItem(LOCAL_STORAGE_KEY)
-        const favoriteIds = storedFavorites ? JSON.parse(storedFavorites) : []
-
-        // Sync favorite status with stored data
-        const updatedCharacters = data.map((character: Character) => ({
-          ...character,
-          isFavorite: favoriteIds.includes(character.id),
-        }))
-
-        setCharacters(updatedCharacters)
-        setFilteredCharacters(updatedCharacters) // Initialize filteredCharacters with all characters
-      } catch (err) {
-        setError(
-          err instanceof Error
-            ? `Error loading characters: ${err.message}`
-            : 'Unknown error while loading characters.',
-        )
-      }
-      setLoading(false)
-    }
-
-    loadCharacters()
-  }, [])
-
-  function toggleFavorite(id: string) {
-    setCharacters(prev => {
-      const updatedCharacters = prev.map(char =>
-        char.id === id ? { ...char, isFavorite: !char.isFavorite } : char,
-      )
-
-      // Persist favorites in localStorage
-      const favoriteIds = updatedCharacters
-        .filter(char => char.isFavorite)
-        .map(char => char.id)
-
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(favoriteIds))
-
-      return updatedCharacters
-    })
-  }
 
   function handleSearch(query: string) {
-    setSearchTerm(query.trim().toLowerCase()) // Store only the query
+    setSearchTerm(query.trim().toLowerCase())
   }
 
-  // Update filtered characters whenever characters or searchTerm changes
-  useEffect(() => {
-    const filtered = searchTerm
-      ? characters.filter(char => char.name.toLowerCase().includes(searchTerm))
-      : characters
-
-    setFilteredCharacters(filtered)
-  }, [searchTerm, characters])
-
-  const totalResults = filteredCharacters.length
-  const resultLabel = totalResults === 1 ? 'result' : 'results'
-  const resultsText =
-    totalResults === 0 ? 'No results' : `${totalResults} ${resultLabel}`
+  const filteredCharacters = searchTerm
+    ? characters.filter(char => char.name.toLowerCase().includes(searchTerm))
+    : characters
 
   return (
     <main>
-      <h1>Marvel Characters</h1>
       <CharacterSearch onSearch={handleSearch} />
-
-      {loading && <p>Loading characters...</p>}
-      {!loading && !error && characters.length > 0 && (
-        <p style={{ textTransform: 'uppercase' }}>{resultsText}</p>
-      )}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-
-      {!loading && !error && (
-        <CharacterList
-          characters={filteredCharacters}
-          onToggleFavorite={toggleFavorite}
-        />
-      )}
+      <p>
+        {filteredCharacters.length}{' '}
+        {filteredCharacters.length === 1 ? 'result' : 'results'}
+      </p>
+      <CharacterList
+        characters={filteredCharacters}
+        onToggleFavorite={toggleFavorite}
+      />
     </main>
   )
 }

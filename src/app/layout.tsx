@@ -1,5 +1,9 @@
 import type { Metadata } from 'next'
 
+import { CharacterProvider } from '@/features/characters/context/CharacterContext'
+
+import Header from '@/features/common/components/Header'
+
 import '../styles/styles.scss'
 
 export const metadata: Metadata = {
@@ -14,7 +18,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <CharacterProvider>
+          <Header />
+          <main>{children}</main>
+        </CharacterProvider>
+      </body>
     </html>
   )
 }
