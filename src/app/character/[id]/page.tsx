@@ -5,6 +5,8 @@ import {
 } from '@/features/characters/services/marvelApi'
 import Image from 'next/image'
 
+import FavoriteButton from '@/features/common/components/FavoriteButton'
+
 export default async function CharacterPage({
   params,
 }: {
@@ -18,6 +20,8 @@ export default async function CharacterPage({
 
   return (
     <main style={{ textAlign: 'center', padding: '20px' }}>
+      <FavoriteButton characterId={id} />
+
       <Image
         src={character.image}
         alt={character.name}
