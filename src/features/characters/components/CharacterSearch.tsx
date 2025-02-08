@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import styles from '../styles/CharacterSearch.module.scss'
 
@@ -13,10 +13,17 @@ export default function CharacterSearch({
 }: Readonly<CharacterSearchProps>) {
   const [searchTerm, setSearchTerm] = useState('')
 
+  // Debounce effect
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      onSearch(searchTerm)
+    }, 300)
+
+    return () => clearTimeout(handler)
+  }, [searchTerm, onSearch])
+
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const value = event.target.value
-    setSearchTerm(value)
-    onSearch(value)
+    setSearchTerm(event.target.value)
   }
 
   return (
