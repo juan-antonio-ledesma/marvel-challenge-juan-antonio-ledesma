@@ -10,9 +10,10 @@ import FavoriteButton from '@/features/common/components/FavoriteButton'
 export default async function CharacterPage({
   params,
 }: {
-  readonly params: { readonly id: string }
+  readonly params: Promise<{ readonly id: string }>
 }) {
-  const { id } = params
+  const { id } = await params
+
   const character = await fetchCharacterById(id)
   const comics = await fetchComicsByCharacterId(id)
 
@@ -20,7 +21,7 @@ export default async function CharacterPage({
 
   return (
     <main style={{ textAlign: 'center', padding: '20px' }}>
-      <FavoriteButton characterId={id} />
+      <FavoriteButton characterId={character.id} />
 
       <Image
         src={character.image}
@@ -28,6 +29,7 @@ export default async function CharacterPage({
         width={300}
         height={300}
       />
+      <h1>{character.name}</h1>
       <p>{character.description}</p>
 
       <h2>Comics</h2>
