@@ -48,3 +48,42 @@ export async function fetchCharacters(): Promise<Character[]> {
     return []
   }
 }
+
+export async function fetchCharacterById(
+  id: string,
+): Promise<Character | null> {
+  const { ts, hash } = getHash()
+  const url = `${BASE_URL}/${id}?ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}`
+
+  try {
+    const response = await fetch(url)
+
+    if (response.status === 404) {
+      console.warn(`⚠️ Character with ID ${id} not found.`)
+      return null
+    }
+
+    if (!response.ok) {
+      throw new Error(`Error ${response.status}: ${response.statusText}`)
+    }
+
+    const data = await response.json()
+
+    if (!data?.data?.results?.length) {
+      return null // Si la API no devuelve resultados, retornamos null
+    }
+
+    const character: MarvelCharacterAPI = data.data.results[0]
+
+    return {
+      id: character.id.toString(),
+      name: character.name,
+      image: `${character.thumbnail.path}.${character.thumbnail.extension}`,
+      description: character.description || 'No description available',
+      isFavorite: false,
+    }
+  } catch (error) {
+    console.error(`🚨 Error fetching character ${id}:`, error)
+    return null
+  }
+}
