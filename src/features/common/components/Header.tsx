@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useCharacters } from '@/features/characters/context/CharacterContext'
 
-import styles from './Header.module.scss'
+import styles from '../styles/Header.module.scss'
 
 export default function Header() {
   const { favoritesCount } = useCharacters()

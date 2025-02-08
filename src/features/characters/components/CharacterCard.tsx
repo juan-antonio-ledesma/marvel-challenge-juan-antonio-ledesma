@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import styles from '../styles/CharacterCard.module.scss'
-import FavoriteButton from './FavoriteButton' // Importamos el botón reutilizable
+import FavoriteButton from '../../common/components/FavoriteButton'
 
 import { Character } from '../types/characterTypes'
 
