@@ -10,6 +10,7 @@ interface CharacterContextType {
   characters: Character[]
   toggleFavorite: (id: string) => void
   favoritesCount: number
+  loading: boolean
 }
 
 const CharacterContext = createContext<CharacterContextType | undefined>(
@@ -20,12 +21,13 @@ export function CharacterProvider({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   const [characters, setCharacters] = useState<Character[]>([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     async function loadCharacters() {
+      setLoading(true)
       try {
         const data = await fetchCharacters()
-
         const storedFavorites = localStorage.getItem(LOCAL_STORAGE_KEY)
         const favoriteIds = storedFavorites ? JSON.parse(storedFavorites) : []
 
@@ -38,6 +40,7 @@ export function CharacterProvider({
       } catch (error) {
         console.error('Error loading characters:', error)
       }
+      setLoading(false)
     }
 
     loadCharacters()
@@ -62,8 +65,8 @@ export function CharacterProvider({
   const favoritesCount = characters.filter(char => char.isFavorite).length
 
   const value = useMemo(
-    () => ({ characters, toggleFavorite, favoritesCount }),
-    [characters, favoritesCount],
+    () => ({ characters, toggleFavorite, favoritesCount, loading }),
+    [characters, favoritesCount, loading],
   )
 
   return (
