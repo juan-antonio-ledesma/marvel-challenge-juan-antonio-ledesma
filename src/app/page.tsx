@@ -13,9 +13,8 @@ const LOCAL_STORAGE_KEY = 'favoriteCharacters'
 
 export default function Home() {
   const [characters, setCharacters] = useState<Character[]>([])
-  const [filteredCharacters, setFilteredCharacters] = useState<
-    Character[] | null
-  >(null)
+  const [filteredCharacters, setFilteredCharacters] = useState<Character[]>([])
+  const [searchTerm, setSearchTerm] = useState<string>('')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
@@ -36,6 +35,7 @@ export default function Home() {
         }))
 
         setCharacters(updatedCharacters)
+        setFilteredCharacters(updatedCharacters) // Initialize filteredCharacters with all characters
       } catch (err) {
         setError(
           err instanceof Error
@@ -67,21 +67,19 @@ export default function Home() {
   }
 
   function handleSearch(query: string) {
-    setFilteredCharacters(
-      query.trim()
-        ? characters.filter(char =>
-            char.name.toLowerCase().includes(query.toLowerCase()),
-          )
-        : null,
-    )
+    setSearchTerm(query.trim().toLowerCase()) // Store only the query
   }
 
-  const resultsText = () => {
-    const totalCount = filteredCharacters
-      ? filteredCharacters.length
-      : characters.length
-    return `${totalCount} ${totalCount === 1 ? 'result' : 'results'}`
-  }
+  // Update filtered characters whenever characters or searchTerm changes
+  useEffect(() => {
+    const filtered = searchTerm
+      ? characters.filter(char => char.name.toLowerCase().includes(searchTerm))
+      : characters
+
+    setFilteredCharacters(filtered)
+  }, [searchTerm, characters])
+
+  const resultsText = `${filteredCharacters.length} ${filteredCharacters.length === 1 ? 'result' : 'results'}`
 
   return (
     <main>
@@ -89,12 +87,12 @@ export default function Home() {
       <CharacterSearch onSearch={handleSearch} />
 
       {loading && <p>Loading characters...</p>}
-      {!loading && !error && characters.length > 0 && <p>{resultsText()}</p>}
+      {!loading && !error && characters.length > 0 && <p>{resultsText}</p>}
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
       {!loading && !error && (
         <CharacterList
-          characters={filteredCharacters ?? characters}
+          characters={filteredCharacters}
           onToggleFavorite={toggleFavorite}
         />
       )}
