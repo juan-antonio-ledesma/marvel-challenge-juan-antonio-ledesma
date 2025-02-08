@@ -1,0 +1,23 @@
+.root {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 2px solid var(--c-black);
+  padding-bottom: 0.5rem;
+  max-width: 400px;
+  margin: 0 auto 1rem;
+}
+
+.icon {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+.input {
+  width: 100%;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0.5rem;
+}

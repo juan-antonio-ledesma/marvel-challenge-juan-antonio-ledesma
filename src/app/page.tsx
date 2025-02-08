@@ -1,14 +1,21 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+
+import { fetchCharacters } from '@/features/characters/services/marvelApi'
+
+import CharacterSearch from '@/features/characters/components/CharacterSearch'
 import CharacterList from '@/features/characters/components/CharacterList'
-import { fetchCharacters } from '@/services/marvelApi'
+
 import { Character } from '@/features/characters/types/characterTypes'
 
 const LOCAL_STORAGE_KEY = 'favoriteCharacters'
 
 export default function Home() {
   const [characters, setCharacters] = useState<Character[]>([])
+  const [filteredCharacters, setFilteredCharacters] = useState<
+    Character[] | null
+  >(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
@@ -30,11 +37,11 @@ export default function Home() {
 
         setCharacters(updatedCharacters)
       } catch (err) {
-        if (err instanceof Error) {
-          setError(`Error loading characters: ${err.message}`)
-        } else {
-          setError('Unknown error while loading characters.')
-        }
+        setError(
+          err instanceof Error
+            ? `Error loading characters: ${err.message}`
+            : 'Unknown error while loading characters.',
+        )
       }
       setLoading(false)
     }
@@ -59,14 +66,35 @@ export default function Home() {
     })
   }
 
+  function handleSearch(query: string) {
+    setFilteredCharacters(
+      query.trim()
+        ? characters.filter(char =>
+            char.name.toLowerCase().includes(query.toLowerCase()),
+          )
+        : null,
+    )
+  }
+
+  const resultsText = () => {
+    const totalCount = filteredCharacters
+      ? filteredCharacters.length
+      : characters.length
+    return `${totalCount} ${totalCount === 1 ? 'result' : 'results'}`
+  }
+
   return (
     <main>
       <h1>Marvel Characters</h1>
+      <CharacterSearch onSearch={handleSearch} />
+
       {loading && <p>Loading characters...</p>}
+      {!loading && !error && characters.length > 0 && <p>{resultsText()}</p>}
       {error && <p style={{ color: 'red' }}>{error}</p>}
+
       {!loading && !error && (
         <CharacterList
-          characters={characters}
+          characters={filteredCharacters ?? characters}
           onToggleFavorite={toggleFavorite}
         />
       )}

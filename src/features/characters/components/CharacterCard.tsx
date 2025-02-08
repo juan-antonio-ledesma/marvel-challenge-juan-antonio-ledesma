@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-import styles from './CharacterCard.module.scss'
+import styles from '../styles/CharacterCard.module.scss'
 
 import IconHeartEmpty from '@/shared/icons/IconHeartEmpty'
 import IconHeartFilled from '@/shared/icons/IconHeartFilled'
