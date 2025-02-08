@@ -79,7 +79,10 @@ export default function Home() {
     setFilteredCharacters(filtered)
   }, [searchTerm, characters])
 
-  const resultsText = `${filteredCharacters.length} ${filteredCharacters.length === 1 ? 'result' : 'results'}`
+  const totalResults = filteredCharacters.length
+  const resultLabel = totalResults === 1 ? 'result' : 'results'
+  const resultsText =
+    totalResults === 0 ? 'No results' : `${totalResults} ${resultLabel}`
 
   return (
     <main>
@@ -87,7 +90,9 @@ export default function Home() {
       <CharacterSearch onSearch={handleSearch} />
 
       {loading && <p>Loading characters...</p>}
-      {!loading && !error && characters.length > 0 && <p>{resultsText}</p>}
+      {!loading && !error && characters.length > 0 && (
+        <p style={{ textTransform: 'uppercase' }}>{resultsText}</p>
+      )}
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
       {!loading && !error && (
