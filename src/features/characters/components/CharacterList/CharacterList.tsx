@@ -12,7 +12,7 @@ export default function CharacterList({
   characters,
 }: Readonly<CharacterListProps>) {
   return (
-    <div className={styles.root}>
+    <div className={styles.root} data-testid="character-list">
       {characters.map(character => (
         <CharacterCard
           key={character.id}
