@@ -9,11 +9,12 @@ import Image from 'next/image'
 
 import CharacterInfo from '@/features/characters/components/CharacterInfo/CharacterInfo'
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { id: string }
-}): Promise<Metadata> {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ id: string }>
+  }
+): Promise<Metadata> {
+  const params = await props.params;
   const character = await fetchCharacterById(params.id)
 
   if (!character) {
