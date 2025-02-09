@@ -29,8 +29,11 @@ export default function CharacterCard({
             src={image}
             alt={name}
             className={styles.image}
-            layout="fill"
-            objectFit="cover"
+            fill
+            sizes="
+    (max-width: 480px) 156px,
+    (max-width: 768px) 172px,
+    188px"
           />
         </span>
       </Link>
