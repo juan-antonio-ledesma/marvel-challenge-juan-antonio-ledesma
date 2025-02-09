@@ -4,6 +4,7 @@ import { useCharacters } from '@/features/characters/context/CharacterContext'
 import { useCharacterSearch } from '@/features/characters/hooks/useCharacterSearch'
 
 import CharacterSearch from '@/features/characters/components/CharacterSearch/CharacterSearch'
+import MessageParagraph from '@/common/components/MessageParagraph/MessageParagraph'
 import CharacterList from '@/features/characters/components/CharacterList/CharacterList'
 
 export default function Home() {
@@ -21,12 +22,10 @@ export default function Home() {
       <CharacterSearch onSearch={setSearchTerm} />
 
       {loading ? (
-        <p>Loading characters...</p>
+        <MessageParagraph message="Loading characters..." />
       ) : (
         <>
-          {characters.length > 0 && (
-            <p style={{ textTransform: 'uppercase' }}>{resultsText}</p>
-          )}
+          {characters.length > 0 && <MessageParagraph message={resultsText} />}
           <CharacterList characters={filteredCharacters} />
         </>
       )}
