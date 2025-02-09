@@ -14,14 +14,15 @@ export default function CharacterCard({
   return (
     <div className={styles.root} data-id={id}>
       <Link href={`/character/${id}`} passHref className={styles.link}>
-        <Image
-          src={image}
-          alt={name}
-          className={styles.image}
-          layout="responsive"
-          width={500}
-          height={500}
-        />
+        <span className={styles.imageWrapper}>
+          <Image
+            src={image}
+            alt={name}
+            className={styles.image}
+            layout="fill"
+            objectFit="cover"
+          />
+        </span>
       </Link>
 
       <div className={styles.footer}>

@@ -4,6 +4,7 @@
 }
 
 .link {
+  position: relative;
   display: block;
   width: 100%;
   height: 11.875rem;
@@ -12,11 +13,14 @@
   background-color: var(--c-grey-500);
 }
 
-.image {
+.imageWrapper {
+  position: absolute;
   width: 100%;
   height: 100%;
+}
+
+.image {
   object-fit: cover;
-  display: block;
 }
 
 .footer {
