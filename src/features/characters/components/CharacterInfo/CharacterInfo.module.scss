@@ -1,0 +1,36 @@
+.root {
+  background-color: var(--c-black);
+  color: var(--c-white);
+}
+
+.innerWrapper {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  width: 100%;
+  max-width: 60rem;
+  margin-inline: auto;
+}
+
+.mainContent {
+  padding-block: 3rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.17;
+}

@@ -5,7 +5,7 @@ import {
 } from '@/features/characters/services/marvelApi'
 import Image from 'next/image'
 
-import FavoriteButton from '@/features/characters/components/FavoriteButton/FavoriteButton'
+import CharacterInfo from '@/features/characters/components/CharacterInfo/CharacterInfo'
 
 export default async function CharacterPage({
   params,
@@ -20,17 +20,13 @@ export default async function CharacterPage({
   if (!character) return notFound()
 
   return (
-    <main style={{ textAlign: 'center', padding: '20px' }}>
-      <FavoriteButton characterId={character.id} />
-
-      <Image
-        src={character.image}
-        alt={character.name}
-        width={300}
-        height={300}
+    <>
+      <CharacterInfo
+        image={character.image}
+        name={character.name}
+        description={character.description}
+        id={character.id}
       />
-      <h1>{character.name}</h1>
-      <p>{character.description}</p>
 
       <h2>Comics</h2>
       {comics.length === 0 ? (
@@ -51,6 +47,6 @@ export default async function CharacterPage({
           ))}
         </ul>
       )}
-    </main>
+    </>
   )
 }
