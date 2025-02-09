@@ -1,4 +1,6 @@
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+
 import {
   fetchCharacterById,
   fetchComicsByCharacterId,
@@ -6,6 +8,27 @@ import {
 import Image from 'next/image'
 
 import CharacterInfo from '@/features/characters/components/CharacterInfo/CharacterInfo'
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string }
+}): Promise<Metadata> {
+  const character = await fetchCharacterById(params.id)
+
+  if (!character) {
+    return {
+      title: 'Character Not Found | Marvel Challenge',
+      description: 'This character could not be found in the Marvel universe.',
+    }
+  }
+
+  return {
+    title: `${character.name} | Marvel Challenge`,
+    description:
+      character.description ?? 'Explore details about this Marvel character!',
+  }
+}
 
 export default async function CharacterPage({
   params,
