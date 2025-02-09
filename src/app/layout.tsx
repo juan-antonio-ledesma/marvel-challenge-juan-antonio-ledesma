@@ -9,15 +9,24 @@ import Main from '@/common/components/Main/Main'
 
 import '../common/styles/globals/styles.scss'
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+interface RootLayoutProps {
+  children: React.ReactNode
+}
+
+export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
   const pathname = usePathname()
 
   const isCharacterPage = pathname.startsWith('/character/')
 
   return (
     <html lang="en">
+      <head>
+        <title>Marvel Challenge</title>
+        <meta
+          name="description"
+          content="Explore all Marvel characters and their stories!"
+        />
+      </head>
       <body>
         <CharacterProvider>
           <Header />
