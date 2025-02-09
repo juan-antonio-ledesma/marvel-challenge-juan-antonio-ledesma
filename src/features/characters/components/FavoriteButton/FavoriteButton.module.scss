@@ -7,6 +7,11 @@
   color: var(--c-white);
 }
 
+.favoriteButtonBig {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
 .favoriteButtonActive {
   color: var(--c-main);
 }
@@ -18,4 +23,9 @@
 .favoriteButtonIcon {
   width: 0.875rem;
   height: 0.875rem;
+}
+
+.favoriteButtonIconBig {
+  width: 1.5rem;
+  height: 1.5rem;
 }

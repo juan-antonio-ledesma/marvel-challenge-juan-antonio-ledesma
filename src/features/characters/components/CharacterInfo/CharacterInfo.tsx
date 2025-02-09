@@ -24,7 +24,7 @@ export default function CharacterInfo({
         <div className={styles.mainContent}>
           <div className={styles.header}>
             <h1 className={styles.title}>{name}</h1>
-            <FavoriteButton characterId={id} />
+            <FavoriteButton characterId={id} isBig />
           </div>
           <p className={styles.description}>{description}</p>
         </div>
