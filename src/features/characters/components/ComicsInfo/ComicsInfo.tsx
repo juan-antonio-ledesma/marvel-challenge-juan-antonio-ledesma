@@ -26,6 +26,8 @@ export default function ComicsInfo({ comics }: Readonly<ComicsInfoProps>) {
                   alt={comic.title}
                   width={180}
                   height={268}
+                  sizes="(max-width: 30rem) 10.25rem, (max-width: 48rem) 10.5rem, 11.25rem"
+                  className={styles.comicImage}
                 />
                 <p className={styles.comicTitle}>{comic.title}</p>
                 <small className={styles.comicPublicationAge}>

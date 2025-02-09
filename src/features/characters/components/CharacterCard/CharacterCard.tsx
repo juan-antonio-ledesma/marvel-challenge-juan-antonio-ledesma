@@ -31,9 +31,9 @@ export default function CharacterCard({
             className={styles.image}
             fill
             sizes="
-    (max-width: 480px) 156px,
-    (max-width: 768px) 172px,
-    188px"
+    (max-width: 30rem) 9.75rem,
+    (max-width: 48rem) 10.75rem,
+    11.75rem"
           />
         </span>
       </Link>

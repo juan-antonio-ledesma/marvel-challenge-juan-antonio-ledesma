@@ -57,6 +57,11 @@
   scroll-snap-align: start;
 }
 
+.comicImage {
+  height: 'auto';
+  max-height: 16.75rem;
+}
+
 .comicTitle {
   margin-top: 0.5rem;
   font-size: 1rem;

@@ -26,7 +26,7 @@ export default function CharacterInfo({
             src={image}
             alt={name}
             fill
-            sizes="(max-width: 768px) 100vw, 320px"
+            sizes="(max-width: 48rem) 100vw, 20rem"
             priority
           />
         </div>
