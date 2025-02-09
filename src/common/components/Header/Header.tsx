@@ -14,7 +14,7 @@ export default function Header() {
   return (
     <header className={styles.root}>
       <nav className={styles.nav}>
-        <Link href="/" className={styles.link}>
+        <Link href="/">
           <Logo />
         </Link>
         <Link href="/favorites" className={styles.link}>
