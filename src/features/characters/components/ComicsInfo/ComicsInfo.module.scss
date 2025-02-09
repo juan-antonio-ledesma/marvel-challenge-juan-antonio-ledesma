@@ -58,8 +58,20 @@
 }
 
 .comicImage {
-  height: 'auto';
-  max-height: 16.75rem;
+  width: 10.25rem;
+  height: 15.375rem;
+
+  // >= 768px
+  @media screen and (min-width: 48rem) {
+    width: 10.5rem;
+    height: 15.75rem;
+  }
+
+  // >= 1008px
+  @media screen and (min-width: 63rem) {
+    width: 11.25rem;
+    height: 16.75rem;
+  }
 }
 
 .comicTitle {
