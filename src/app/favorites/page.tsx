@@ -21,7 +21,7 @@ export default function FavoritesPage() {
     totalResults === 0 ? 'No results' : `${totalResults} ${resultLabel}`
 
   return (
-    <main>
+    <>
       <h1 className="sr-only">Marvel Favorite Characters</h1>
 
       <CharacterSearch onSearch={setSearchTerm} />
@@ -34,6 +34,6 @@ export default function FavoritesPage() {
           <CharacterList characters={filteredCharacters} />
         </>
       )}
-    </main>
+    </>
   )
 }
