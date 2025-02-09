@@ -5,13 +5,13 @@
   display: grid;
   place-content: center;
   color: var(--c-white);
+}
 
-  &.is-active {
-    color: var(--c-main);
-  }
+.favoriteButtonActive {
+  color: var(--c-main);
+}
 
-  .icon {
-    width: 0.875rem;
-    height: 0.875rem;
-  }
+.favoriteButtonIcon {
+  width: 0.875rem;
+  height: 0.875rem;
 }

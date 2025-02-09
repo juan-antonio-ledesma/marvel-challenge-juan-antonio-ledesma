@@ -14,15 +14,20 @@ export default function FavoriteButton({
   characterId,
 }: Readonly<FavoriteButtonProps>) {
   const { characters, toggleFavorite } = useCharacters()
-  const isFavorite = characters.some(fav => fav.id === characterId)
+  const character = characters.find(fav => fav.id === characterId)
+  const isFavorite = character ? character.isFavorite : false
 
   return (
     <button
       onClick={() => toggleFavorite(characterId)}
-      className={`${styles.favoriteButton} ${isFavorite ? styles.isActive : ''}`}
+      className={`${styles.favoriteButton} ${isFavorite ? styles.favoriteButtonActive : ''}`}
       aria-label={isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
     >
-      {isFavorite ? <IconHeartFilled /> : <IconHeartEmpty />}
+      {isFavorite ? (
+        <IconHeartFilled className={styles.favoriteButtonIcon} />
+      ) : (
+        <IconHeartEmpty className={styles.favoriteButtonIcon} />
+      )}
     </button>
   )
 }
