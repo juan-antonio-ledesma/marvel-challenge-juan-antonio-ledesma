@@ -5,16 +5,14 @@ import {
   fetchCharacterById,
   fetchComicsByCharacterId,
 } from '@/features/characters/services/marvelApi'
-import Image from 'next/image'
 
 import CharacterInfo from '@/features/characters/components/CharacterInfo/CharacterInfo'
+import ComicsInfo from '@/features/characters/components/ComicsInfo/ComicsInfo'
 
-export async function generateMetadata(
-  props: {
-    params: Promise<{ id: string }>
-  }
-): Promise<Metadata> {
-  const params = await props.params;
+export async function generateMetadata(props: {
+  params: Promise<{ id: string }>
+}): Promise<Metadata> {
+  const params = await props.params
   const character = await fetchCharacterById(params.id)
 
   if (!character) {
@@ -52,25 +50,7 @@ export default async function CharacterPage({
         id={character.id}
       />
 
-      <h2>Comics</h2>
-      {comics.length === 0 ? (
-        <p>No comics available.</p>
-      ) : (
-        <ul style={{ listStyle: 'none', padding: 0 }}>
-          {comics.map(comic => (
-            <li key={comic.id} style={{ marginBottom: '15px' }}>
-              <Image
-                src={comic.thumbnail}
-                alt={comic.title}
-                width={180}
-                height={268}
-              />
-              <p>{comic.title}</p>
-              <small>{comic.releaseDate}</small>
-            </li>
-          ))}
-        </ul>
-      )}
+      <ComicsInfo comics={comics} />
     </>
   )
 }
