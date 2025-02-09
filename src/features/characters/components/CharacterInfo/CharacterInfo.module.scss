@@ -12,30 +12,58 @@
 
 .innerWrapper {
   display: flex;
-  align-items: center;
-  gap: 3rem;
+  flex-direction: column;
+  gap: 1.5rem;
   width: 100%;
   max-width: 60rem;
   margin-inline: auto;
+
+  // >= 768px
+  @media screen and (min-width: 48rem) {
+    gap: 0;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.image {
+  width: 100%;
+  height: auto;
 }
 
 .mainContent {
-  padding-block: 3rem;
   width: 100%;
+  padding: 0 1rem 1.5rem;
+  transition: padding var(--transition-default);
+
+  // >= 768px
+  @media screen and (min-width: 48rem) {
+    padding: 3rem;
+  }
+
+  // >= 1008px
+  @media screen and (min-width: 63rem) {
+    padding: 3rem 0 3rem 3rem;
+  }
 }
 
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 1.5rem;
   margin-bottom: 1.5rem;
 }
 
 .title {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
   text-transform: uppercase;
+
+  // >= 768px
+  @media screen and (min-width: 48rem) {
+    font-size: 2.5rem;
+  }
 }
 
 .description {
