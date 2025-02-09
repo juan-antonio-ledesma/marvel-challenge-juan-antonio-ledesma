@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -11,9 +13,17 @@ export default function CharacterCard({
   name,
   image,
 }: Readonly<Character>) {
+  const [isHovered, setIsHovered] = useState(false)
+
   return (
     <div className={styles.root} data-id={id}>
-      <Link href={`/character/${id}`} passHref className={styles.link}>
+      <Link
+        href={`/character/${id}`}
+        passHref
+        className={styles.link}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         <span className={styles.imageWrapper}>
           <Image
             src={image}
@@ -27,7 +37,7 @@ export default function CharacterCard({
 
       <div className={styles.footer}>
         <h2 className={styles.name}>{name}</h2>
-        <FavoriteButton characterId={id} />
+        <FavoriteButton characterId={id} isHovered={isHovered} />
       </div>
     </div>
   )
