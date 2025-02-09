@@ -1,7 +1,10 @@
 'use client'
 
 import Link from 'next/link'
+
 import { useCharacters } from '@/features/characters/context/CharacterContext'
+
+import Logo from '@/assets/images/Logo'
 
 import styles from './Header.module.scss'
 
@@ -12,7 +15,7 @@ export default function Header() {
     <header className={styles.root}>
       <nav className={styles.nav}>
         <Link href="/" className={styles.link}>
-          Home
+          <Logo />
         </Link>
         <Link href="/favorites" className={styles.link}>
           Favorites ({favoritesCount})
