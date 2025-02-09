@@ -1,7 +1,10 @@
+@use '../../../common/styles/globals/variables.scss' as *;
+
 .root {
   padding: 1.5rem 1rem;
 
-  @media screen and (min-width: var(--sm)) {
+  // 394px
+  @media screen and (min-width: 24.625rem) {
     padding: 3rem;
   }
 }

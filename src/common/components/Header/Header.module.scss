@@ -1,9 +1,12 @@
+@use '../../../common/styles/globals/variables.scss' as *;
+
 .root {
   background-color: var(--c-black);
   color: var(--c-white);
   padding: 1rem;
 
-  @media screen and (min-width: var(--sm)) {
+  // 394px
+  @media screen and (min-width: 24.625rem) {
     padding: 1rem 3rem;
   }
 }
