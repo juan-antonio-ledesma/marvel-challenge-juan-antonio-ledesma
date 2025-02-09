@@ -21,7 +21,8 @@ export default function FavoritesPage() {
 
   return (
     <main>
-      <h1>Favorite Characters</h1>
+      <h1 className="sr-only">Marvel Favorite Characters</h1>
+
       <CharacterSearch onSearch={setSearchTerm} />
 
       {favoriteCharacters.length === 0 ? (

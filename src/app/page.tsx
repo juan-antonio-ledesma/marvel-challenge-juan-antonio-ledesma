@@ -19,6 +19,8 @@ export default function Home() {
 
   return (
     <>
+      <h1 className="sr-only">Marvel Characters</h1>
+
       <CharacterSearch onSearch={setSearchTerm} />
 
       {loading ? (
