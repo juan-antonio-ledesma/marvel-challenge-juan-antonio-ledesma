@@ -8,8 +8,8 @@
   color: var(--c-white);
   padding: 1rem;
 
-  // 394px
-  @media screen and (min-width: 24.625rem) {
+  // >= 768px
+  @media screen and (min-width: 48rem) {
     padding: 1rem 3rem;
   }
 }
