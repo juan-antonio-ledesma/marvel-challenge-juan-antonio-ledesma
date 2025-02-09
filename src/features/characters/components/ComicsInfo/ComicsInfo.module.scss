@@ -1,5 +1,17 @@
 .root {
   padding-block: 3rem;
+  padding-left: 1rem;
+  transition: padding-left var(--transition-default);
+
+  // >= 768px
+  @media screen and (min-width: 48rem) {
+    padding-left: 3rem;
+  }
+
+  // >= 1008px
+  @media screen and (min-width: 63rem) {
+    padding-left: 0;
+  }
 }
 
 .innerWrapper {
@@ -23,17 +35,20 @@
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
 
-  &::-webkit-scrollbar-track {
-    background-color: var(--c-grey-500);
-  }
+  // >= 1008px
+  @media screen and (min-width: 63rem) {
+    &::-webkit-scrollbar-track {
+      background-color: var(--c-grey-500);
+    }
 
-  &::-webkit-scrollbar {
-    height: 0.25rem;
-  }
+    &::-webkit-scrollbar {
+      height: 0.25rem;
+    }
 
-  &::-webkit-scrollbar-thumb {
-    background-color: var(--c-main);
-    cursor: pointer;
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--c-main);
+      cursor: grab;
+    }
   }
 }
 
