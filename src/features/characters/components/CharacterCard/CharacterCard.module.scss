@@ -11,6 +11,10 @@
   flex-shrink: 0;
   overflow: hidden;
   background-color: var(--c-grey-500);
+
+  &:hover + .footer {
+    background-color: var(--c-main);
+  }
 }
 
 .imageWrapper {
@@ -38,6 +42,7 @@
     calc(100% - 12px) 100%,
     0 100%
   );
+  transition: background-color var(--transition-default);
 }
 
 .name {
