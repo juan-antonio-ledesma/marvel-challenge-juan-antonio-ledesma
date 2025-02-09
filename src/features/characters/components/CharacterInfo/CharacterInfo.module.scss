@@ -26,9 +26,19 @@
   }
 }
 
-.image {
+.imageWrapper {
   width: 100%;
-  height: auto;
+  aspect-ratio: 1;
+  position: relative;
+
+  // >= 768px
+  @media screen and (min-width: 48rem) {
+    max-width: 320px;
+  }
+}
+
+.image {
+  object-fit: cover;
 }
 
 .mainContent {

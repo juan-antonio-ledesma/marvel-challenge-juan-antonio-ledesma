@@ -20,13 +20,16 @@ export default function CharacterInfo({
   return (
     <section className={styles.root}>
       <div className={styles.innerWrapper}>
-        <Image
-          className={styles.image}
-          src={image}
-          alt={name}
-          width={320}
-          height={320}
-        />
+        <div className={styles.imageWrapper}>
+          <Image
+            className={styles.image}
+            src={image}
+            alt={name}
+            fill
+            sizes="(max-width: 768px) 100vw, 320px"
+            priority
+          />
+        </div>
         <div className={styles.mainContent}>
           <div className={styles.header}>
             <h1 className={styles.title}>{name}</h1>
