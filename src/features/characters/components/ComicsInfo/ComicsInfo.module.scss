@@ -28,7 +28,7 @@
   }
 
   &::-webkit-scrollbar {
-    height: 4px;
+    height: 0.25rem;
   }
 
   &::-webkit-scrollbar-thumb {
@@ -44,7 +44,7 @@
 
 .comicTitle {
   margin-top: 0.5rem;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
   line-height: 1.17;
 }
