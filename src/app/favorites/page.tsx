@@ -4,6 +4,7 @@ import { useCharacters } from '@/features/characters/context/CharacterContext'
 import { useCharacterSearch } from '@/features/characters/hooks/useCharacterSearch'
 
 import CharacterSearch from '@/features/characters/components/CharacterSearch/CharacterSearch'
+import MessageParagraph from '@/common/components/MessageParagraph/MessageParagraph'
 import CharacterList from '@/features/characters/components/CharacterList/CharacterList'
 
 export default function FavoritesPage() {
@@ -26,10 +27,10 @@ export default function FavoritesPage() {
       <CharacterSearch onSearch={setSearchTerm} />
 
       {favoriteCharacters.length === 0 ? (
-        <p>No favorites yet.</p>
+        <MessageParagraph message="No favorites yet" />
       ) : (
         <>
-          <p style={{ textTransform: 'uppercase' }}>{resultsText}</p>
+          <MessageParagraph message={resultsText} />
           <CharacterList characters={filteredCharacters} />
         </>
       )}
