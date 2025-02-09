@@ -18,7 +18,7 @@ export default function CharacterInfo({
   id,
 }: Readonly<CharacterInfoProps>) {
   return (
-    <div className={styles.root}>
+    <section className={styles.root}>
       <div className={styles.innerWrapper}>
         <Image src={image} alt={name} width={320} height={320} />
         <div className={styles.mainContent}>
@@ -29,6 +29,6 @@ export default function CharacterInfo({
           <p className={styles.description}>{description}</p>
         </div>
       </div>
-    </div>
+    </section>
   )
 }

@@ -1,6 +1,5 @@
 'use client'
 
-import type { Metadata } from 'next'
 import { usePathname } from 'next/navigation'
 
 import { CharacterProvider } from '@/features/characters/context/CharacterContext'
