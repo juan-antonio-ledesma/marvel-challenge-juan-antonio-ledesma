@@ -17,8 +17,7 @@ export default function Home() {
     totalResults === 0 ? 'No results' : `${totalResults} ${resultLabel}`
 
   return (
-    <main>
-      <h1>Marvel Characters</h1>
+    <>
       <CharacterSearch onSearch={setSearchTerm} />
 
       {loading ? (
@@ -31,6 +30,6 @@ export default function Home() {
           <CharacterList characters={filteredCharacters} />
         </>
       )}
-    </main>
+    </>
   )
 }

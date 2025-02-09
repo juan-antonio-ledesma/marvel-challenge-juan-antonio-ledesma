@@ -2,6 +2,10 @@
   background-color: var(--c-black);
   color: var(--c-white);
   padding: 1rem;
+
+  @media screen and (min-width: var(--sm)) {
+    padding: 1rem 3rem;
+  }
 }
 
 .nav {
@@ -11,6 +15,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.logoLink {
+  width: 8.125rem;
+  height: 3.25rem;
 }
 
 .favoritesLink {

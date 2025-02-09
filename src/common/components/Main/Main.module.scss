@@ -1,0 +1,13 @@
+.root {
+  padding: 1.5rem 1rem;
+
+  @media screen and (min-width: var(--sm)) {
+    padding: 3rem;
+  }
+}
+
+.innerContainer {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+}
