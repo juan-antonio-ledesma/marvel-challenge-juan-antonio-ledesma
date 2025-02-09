@@ -1,11 +1,17 @@
-export default function IconHeartFilled() {
+interface IconHeartFilledProps {
+  className?: string
+}
+
+export default function IconHeartFilled({
+  className,
+}: Readonly<IconHeartFilledProps>) {
   return (
     <svg
       width="13"
       height="12"
       viewBox="0 0 13 12"
       fill="currentColor"
-      className="icon"
+      className={className}
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
     >

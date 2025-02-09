@@ -1,11 +1,17 @@
-export default function IconMagnifier() {
+interface IconMagnifierProps {
+  className?: string
+}
+
+export default function IconMagnifier({
+  className,
+}: Readonly<IconMagnifierProps>) {
   return (
     <svg
       width="13"
       height="13"
       viewBox="0 0 13 13"
       fill="currentColor"
-      className="icon"
+      className={className}
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
     >

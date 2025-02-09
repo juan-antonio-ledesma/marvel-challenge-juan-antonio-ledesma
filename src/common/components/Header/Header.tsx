@@ -6,6 +6,8 @@ import { useCharacters } from '@/features/characters/context/CharacterContext'
 
 import Logo from '@/assets/images/Logo'
 
+import IconHeartFilled from '@/assets/icons/IconHeartFilled'
+
 import styles from './Header.module.scss'
 
 export default function Header() {
@@ -17,8 +19,9 @@ export default function Header() {
         <Link href="/">
           <Logo />
         </Link>
-        <Link href="/favorites" className={styles.link}>
-          Favorites ({favoritesCount})
+        <Link href="/favorites" className={styles.favoritesLink}>
+          <IconHeartFilled className={styles.favoritesLinkIcon} />
+          {favoritesCount}
         </Link>
       </nav>
     </header>
