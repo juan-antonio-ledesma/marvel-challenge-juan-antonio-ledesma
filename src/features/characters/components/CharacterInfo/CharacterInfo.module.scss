@@ -47,7 +47,7 @@
 .mainContent {
   width: 100%;
   padding: 0 1rem 1.5rem;
-  transition: padding $transition-default);
+  transition: padding $transition-default;
 
   // >= 768px
   @media screen and (min-width: 48rem) {
