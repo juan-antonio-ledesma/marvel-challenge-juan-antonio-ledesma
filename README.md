@@ -6,6 +6,10 @@ Este proyecto consiste en una aplicación web que permite visualizar un listado 
 
 El desarrollo ha seguido una arquitectura modular y escalable, asegurando la correcta separación de responsabilidades.
 
+## Demo en Producción
+
+**[Prueba la aplicación aquí](https://marvel-challenge-juan-antonio-ledesma.vercel.app/)**
+
 ## Instalación
 
 Para instalar y ejecutar el proyecto, sigue estos pasos:
@@ -21,8 +25,8 @@ npm install
 Crear un archivo `.env.local` en la raíz del proyecto con las siguientes variables:
 
 ```
-NEXT_PUBLIC_MARVEL_PUBLIC_KEY=01e858cb06141804100ba176c95c5124
-NEXT_PUBLIC_MARVEL_PRIVATE_KEY=af21f5ec17d522217cf8ffd39eb5a08f4417b6c7
+NEXT_PUBLIC_MARVEL_PUBLIC_KEY=TU_CLAVE_PUBLICA
+NEXT_PUBLIC_MARVEL_PRIVATE_KEY=TU_CLAVE_PRIVADA
 ```
 
 ### 3. Ejecutar el modo desarrollo
@@ -41,7 +45,7 @@ npm run dev
 
 - TypeScript y .tsx
 
-- SASS para los estilos (.modules.scss -> te permite encapsular estilos), también se han utilizado custom properties
+- SASS para los estilos (.modules.scss -> te permite encapsular estilos)
 
 - ESLint y Prettier para formateo y estándares de código
 
