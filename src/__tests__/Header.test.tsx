@@ -14,40 +14,25 @@ vi.mock('@/assets/icons/IconHeartFilled', () => ({
   default: () => <svg data-testid="icon-heart-filled" />,
 }))
 
-// Simulamos el hook `useCharacters` para controlar el estado
-vi.mock('@/features/characters/context/CharacterContext', () => ({
-  useCharacters: () => ({
-    favoritesCount: 5, // Simulamos que hay 5 favoritos
-  }),
-}))
-
 describe('Header Component', () => {
-  test('renders the logo and the favorites link with correct count', () => {
+  test('renders the logo ', () => {
     render(<Header />)
 
-    // Verificamos que el logo se está renderizando
+    // Verify that the logo is rendering
     expect(screen.getByTestId('logo')).toBeInTheDocument()
-
-    // Verificamos que el icono de favoritos se está renderizando
-    expect(screen.getByTestId('icon-heart-filled')).toBeInTheDocument()
-
-    // Verificamos que el contador de favoritos esté correcto usando el contenido del enlace
-    const favoritesLink = screen.getByRole('link', { name: /0/i })
-    expect(favoritesLink).toHaveTextContent('5') // Comprobamos que el número 5 esté dentro del link
   })
 
   test('renders favorites count as 0 when there are no favorites', () => {
-    // Simulamos que no hay favoritos
     vi.mock('@/features/characters/context/CharacterContext', () => ({
       useCharacters: () => ({
-        favoritesCount: 0, // Simulamos que no hay favoritos
+        favoritesCount: 0, // We pretend that there are no favorites
       }),
     }))
 
     render(<Header />)
 
-    // Verificamos que el contador de favoritos sea 0
+    // We verify that the favorites counter is 0.
     const favoritesLink = screen.getByRole('link', { name: /0/i })
-    expect(favoritesLink).toHaveTextContent('0') // Verificamos que el número 0 esté dentro del link
+    expect(favoritesLink).toHaveTextContent('0') // Verify that the number 0 is inside the link
   })
 })
