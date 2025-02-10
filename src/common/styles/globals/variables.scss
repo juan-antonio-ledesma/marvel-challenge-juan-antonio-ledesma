@@ -1,18 +1,16 @@
-:root {
-  // Colors
-  --c-white: #fff;
-  --c-black: #000;
-  --c-grey-500: #d9d9d9;
-  --c-grey-600: #aaaaaa;
-  --c-grey-700: #333333;
-  --c-main: #ec1d24;
+// Colors
+$c-white: #fff;
+$c-black: #000;
+$c-grey-500: #d9d9d9;
+$c-grey-600: #aaaaaa;
+$c-grey-700: #333333;
+$c-main: #ec1d24;
 
-  // Font families
-  --ff-roboto-condensed: 'Roboto Condensed', sans-serif;
+// Font families
+$ff-roboto-condensed: 'Roboto Condensed', sans-serif;
 
-  // Transitions
-  --transition-default: 300ms ease;
+// Transitions
+$transition-default: 300ms ease;
 
-  // Max width
-  --max-width: 88.5rem; // 1416px
-}
+// Max width
+$max-width: 88.5rem; // 1416px

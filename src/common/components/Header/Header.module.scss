@@ -1,13 +1,13 @@
-@use '../../../common/styles/globals/variables.scss' as *;
+@use '../../styles/globals/variables.scss' as *;
 
 .root {
   position: sticky;
   top: 0;
   z-index: 1;
-  background-color: var(--c-black);
-  color: var(--c-white);
+  background-color: $c-black;
+  color: $c-white;
   padding: 1rem;
-  border-bottom: 0.0625rem solid var(--c-grey-700);
+  border-bottom: 0.0625rem solid $c-grey-700;
 
   // >= 768px
   @media screen and (min-width: 48rem) {
@@ -17,7 +17,7 @@
 
 .nav {
   width: 100%;
-  max-width: var(--max-width);
+  max-width: $max-width;
   margin-inline: auto;
   display: flex;
   justify-content: space-between;
@@ -35,11 +35,11 @@
   display: flex;
   gap: 0.5rem;
   align-items: center;
-  color: var(--c-white);
+  color: $c-white;
 }
 
 .favoritesLinkIcon {
   width: 1.5rem;
   height: 1.5rem;
-  color: var(--c-main);
+  color: $c-main;
 }

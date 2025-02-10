@@ -1,6 +1,8 @@
+@use '../../../../common/styles/globals/variables.scss' as *;
+
 .root {
-  background-color: var(--c-black);
-  color: var(--c-white);
+  background-color: $c-black;
+  color: $c-white;
   clip-path: polygon(
     0 0,
     100% 0,
@@ -45,7 +47,7 @@
 .mainContent {
   width: 100%;
   padding: 0 1rem 1.5rem;
-  transition: padding var(--transition-default);
+  transition: padding $transition-default);
 
   // >= 768px
   @media screen and (min-width: 48rem) {

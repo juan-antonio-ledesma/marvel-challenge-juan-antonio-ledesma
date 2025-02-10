@@ -1,4 +1,4 @@
-@use '../../../common/styles/globals/variables.scss' as *;
+@use '../../styles/globals/variables.scss' as *;
 
 .root {
   padding: 1.5rem 1rem;
@@ -11,6 +11,6 @@
 
 .innerContainer {
   width: 100%;
-  max-width: var(--max-width);
+  max-width: $max-width;
   margin-inline: auto;
 }

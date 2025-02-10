@@ -1,10 +1,12 @@
+@use '../../../../common/styles/globals/variables.scss' as *;
+
 .favoriteButton {
   flex-shrink: 0;
   width: 0.875rem;
   height: 0.875rem;
   display: grid;
   place-content: center;
-  color: var(--c-white);
+  color: $c-white;
 }
 
 .favoriteButtonBig {
@@ -13,11 +15,11 @@
 }
 
 .favoriteButtonActive {
-  color: var(--c-main);
+  color: $c-main;
 }
 
 .favoriteButtonActiveHover {
-  color: var(--c-white);
+  color: $c-white;
 }
 
 .favoriteButtonIcon {
